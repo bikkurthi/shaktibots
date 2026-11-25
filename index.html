@@ -1,0 +1,758 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shakti Bots · VEX Robotics for Kids</title>
+<meta name="description" content="Shakti Bots is a VEX IQ and VEX GO robotics program where kids design, build, code and compete, and learn to become great teammates. Call, text or WhatsApp 571-567-7389.">
+<meta property="og:title" content="Shakti Bots · VEX Robotics for Kids">
+<meta property="og:description" content="Kids design, build, code and compete with real robots. Spots open now. Call, text or WhatsApp 571-567-7389.">
+<meta name="theme-color" content="#14213d">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ff7a1a'/%3E%3Cpath d='M36 8 18 36h12l-4 20 20-30H34z' fill='%2314213d'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root {
+  --navy: #14213d;
+  --navy-2: #1f3160;
+  --ink: #14213d;
+  --ink-soft: #4b5675;
+  --paper: #ffffff;
+  --cream: #fff8ef;
+  --tint: #f3f5fa;
+  --line: #e1e5ef;
+  --orange: #ff7a1a;
+  --orange-deep: #e05f00;
+  --sun: #ffc93c;
+  --mint: #1fbfa8;
+  --mint-soft: #dcf6f1;
+  --rose: #ef476f;
+  --rose-soft: #fde4ea;
+  --sky-soft: #e5edff;
+  --whatsapp: #25d366;
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  --radius: 20px;
+  --wrap: 1140px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+h1, h2, h3, h4, p { margin: 0; }
+h1, h2, h3, h4 { font-family: var(--display); line-height: 1.08; letter-spacing: -0.02em; }
+a { color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-inline: 20px; }
+@media (min-width: 720px) { .wrap { padding-inline: 32px; } }
+section { padding-block: clamp(64px, 9vw, 112px); }
+.eyebrow {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--orange-deep);
+  margin-bottom: 14px;
+}
+.section-title { font-size: clamp(32px, 5vw, 52px); font-weight: 800; max-width: 18ch; }
+.section-lede { margin-top: 16px; font-size: clamp(17px, 2vw, 20px); color: var(--ink-soft); max-width: 60ch; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 50px; padding: 12px 22px; border-radius: 999px;
+  font-weight: 700; font-size: 16px; text-decoration: none; white-space: nowrap;
+  border: 2px solid transparent; transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-primary { background: var(--orange); color: #fff; box-shadow: 0 8px 20px rgba(255,122,26,.35); }
+.btn-primary:hover { background: var(--orange-deep); }
+.btn-ghost { border-color: currentColor; color: inherit; }
+.btn-wa { background: var(--whatsapp); color: #08361b; }
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(20,33,61,.96);
+  backdrop-filter: saturate(1.4) blur(10px);
+  color: #fff;
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 68px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; }
+.brand-mark { width: 38px; height: 38px; flex: none; }
+.brand span em { font-style: normal; color: var(--orange); }
+.nav { display: none; gap: 28px; align-items: center; }
+.nav a { text-decoration: none; font-weight: 600; font-size: 15px; opacity: .85; }
+.nav a:hover { opacity: 1; color: var(--sun); }
+.header-cta { min-height: 42px; padding: 8px 18px; font-size: 15px; }
+@media (min-width: 900px) { .nav { display: flex; } }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  background: var(--navy);
+  color: #fff;
+  padding-block: clamp(56px, 8vw, 104px) clamp(72px, 9vw, 120px);
+  overflow: hidden;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 20%, transparent 75%);
+}
+.hero .wrap { position: relative; display: grid; gap: 48px; align-items: center; }
+@media (min-width: 960px) { .hero .wrap { grid-template-columns: 1.15fr .85fr; } }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,201,60,.14); color: var(--sun);
+  border: 1px solid rgba(255,201,60,.35);
+  padding: 6px 14px; border-radius: 999px; font-weight: 700; font-size: 14px;
+}
+.pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 4px rgba(255,201,60,.25); animation: pulse 2s infinite; }
+@keyframes pulse { 50% { box-shadow: 0 0 0 8px rgba(255,201,60,0); } }
+.hero h1 { margin-top: 22px; font-size: clamp(44px, 7.4vw, 86px); font-weight: 800; letter-spacing: -0.035em; }
+.hero h1 .hl { color: var(--orange); }
+.hero h1 .underline { position: relative; white-space: nowrap; }
+.hero h1 .underline::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: .04em; height: .14em;
+  background: var(--sun); border-radius: 4px; z-index: -1; opacity: .9;
+}
+.hero h1 .underline { z-index: 0; color: #fff; }
+.hero-lede { margin-top: 22px; font-size: clamp(18px, 2.2vw, 21px); color: #d4dbef; max-width: 36ch; }
+.hero-ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-ctas .btn-ghost { color: #fff; }
+.hero-facts { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px 28px; color: #b9c3de; font-size: 15px; font-weight: 600; }
+.hero-facts span { display: inline-flex; align-items: center; gap: 8px; }
+.hero-facts svg { width: 18px; height: 18px; color: var(--mint); }
+
+.hero-art { position: relative; max-width: 460px; width: 100%; justify-self: center; }
+.hero-art svg { width: 100%; height: auto; display: block; }
+.stat-float {
+  position: absolute; background: #fff; color: var(--ink); border-radius: 16px;
+  padding: 12px 16px; box-shadow: 0 16px 40px rgba(0,0,0,.28); font-weight: 700; font-size: 14px; line-height: 1.25;
+}
+.stat-float b { display: block; font-family: var(--display); font-size: 26px; color: var(--orange-deep); }
+.stat-float.one { left: -4%; bottom: 12%; }
+.stat-float.two { right: -2%; top: 8%; }
+@media (max-width: 480px) { .stat-float { font-size: 12px; padding: 10px 12px; } .stat-float b { font-size: 20px; } }
+
+/* ---------- Ribbon ---------- */
+.ribbon { background: var(--orange); color: var(--navy); padding: 18px 0; overflow: hidden; }
+.ribbon-track { display: flex; gap: 40px; width: max-content; animation: scroll 38s linear infinite; font-family: var(--display); font-weight: 800; font-size: clamp(18px, 2.4vw, 24px); }
+.ribbon-track span { display: inline-flex; align-items: center; gap: 40px; white-space: nowrap; }
+.ribbon-track span::after { content: "✦"; color: #fff; }
+@keyframes scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ribbon-track, .pill .dot { animation: none; } html { scroll-behavior: auto; } }
+
+/* ---------- Learn ---------- */
+.learn { background: var(--cream); }
+.manifesto {
+  margin-top: 40px; display: grid; gap: 28px; align-items: center;
+  background: var(--navy); color: #fff; border-radius: 28px; padding: clamp(28px, 5vw, 56px);
+}
+@media (min-width: 860px) { .manifesto { grid-template-columns: 1fr 1fr; } }
+.ste { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 4.6vw, 52px); line-height: 1.05; letter-spacing: -0.03em; }
+.ste .one { color: var(--sun); }
+.manifesto p { color: #d4dbef; font-size: clamp(17px, 1.9vw, 19px); }
+.manifesto p strong { color: #fff; }
+
+.learn-grid { margin-top: 28px; display: grid; gap: 18px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .learn-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .learn-grid { grid-template-columns: repeat(3, 1fr); } }
+.learn-card {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 26px; display: flex; flex-direction: column; gap: 12px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.learn-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(20,33,61,.1); }
+.icon-tile { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; }
+.icon-tile svg { width: 28px; height: 28px; }
+.learn-card h3 { font-size: 22px; font-weight: 700; }
+.learn-card p { color: var(--ink-soft); font-size: 16px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.tag { font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--tint); color: var(--navy-2); }
+.t-orange { background: #ffe9d8; color: var(--orange-deep); }
+.t-mint { background: var(--mint-soft); color: #0b7d6d; }
+.t-rose { background: var(--rose-soft); color: #c42a52; }
+.t-sky { background: var(--sky-soft); color: #2b4bb8; }
+.t-sun { background: #fff1c9; color: #9a6a00; }
+
+.quote-card {
+  grid-column: 1 / -1; background: var(--orange); color: var(--navy); border: 0;
+  display: grid; gap: 18px; align-items: center;
+}
+@media (min-width: 860px) { .quote-card { grid-template-columns: auto 1fr; gap: 32px; padding: 36px 40px; } }
+.quote-card blockquote { margin: 0; font-family: var(--display); font-weight: 800; font-size: clamp(26px, 3.6vw, 40px); line-height: 1.1; letter-spacing: -0.02em; }
+.quote-card p { color: var(--navy); font-size: 17px; font-weight: 500; margin-top: 10px; }
+.quote-mark { font-family: var(--display); font-size: 120px; line-height: .6; color: #fff; font-weight: 800; height: 60px; }
+
+/* ---------- Teams ---------- */
+.teams-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 24px; }
+.legend { display: flex; flex-wrap: wrap; gap: 16px; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.seat { width: 14px; height: 14px; border-radius: 50%; display: inline-block; }
+.seat.taken { background: var(--navy); }
+.seat.open { background: #fff; border: 2.5px solid var(--mint); }
+.seat.ask { background: #fff; border: 2.5px dashed #9aa4bf; }
+
+.team-grid { margin-top: 40px; display: grid; gap: 22px; grid-template-columns: 1fr; }
+@media (min-width: 720px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1080px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.team {
+  --accent: var(--orange);
+  position: relative; display: flex; flex-direction: column;
+  background: #fff; border: 1px solid var(--line); border-radius: 24px; overflow: hidden;
+  box-shadow: 0 2px 4px rgba(20,33,61,.04);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.team:hover { transform: translateY(-4px); box-shadow: 0 22px 48px rgba(20,33,61,.12); }
+.team-top { background: var(--accent); color: #fff; padding: 22px 22px 20px; position: relative; }
+.team-top .kit { font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; opacity: .9; }
+.team-top h3 { font-size: 28px; font-weight: 800; margin-top: 4px; }
+.team-top .sub { font-size: 15px; font-weight: 600; opacity: .92; margin-top: 2px; }
+.team-emblem { position: absolute; right: 18px; top: 18px; width: 52px; height: 52px; border-radius: 14px; background: rgba(255,255,255,.18); display: grid; place-items: center; }
+.team-emblem svg { width: 30px; height: 30px; }
+.status {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 14px;
+  background: #fff; color: var(--ink); font-size: 13px; font-weight: 800; padding: 5px 12px; border-radius: 999px;
+}
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--status, var(--mint)); }
+
+.team-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 18px; flex: 1; }
+.seats-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.seats { display: flex; gap: 6px; }
+.seats .seat { width: 22px; height: 22px; }
+.seats-label { font-size: 14px; font-weight: 700; color: var(--ink-soft); }
+.seats-label b { color: var(--ink); }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stat { background: var(--tint); border-radius: 14px; padding: 10px 8px; text-align: center; }
+.stat b { display: block; font-family: var(--display); font-size: 22px; font-weight: 800; line-height: 1.1; }
+.stat span { font-size: 12px; font-weight: 700; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
+.stat.award b { color: var(--orange-deep); }
+
+.details { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; font-size: 15px; }
+.details li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; }
+.details svg { width: 20px; height: 20px; margin-top: 2px; color: var(--accent); }
+.details b { font-weight: 700; }
+.team-cta { margin-top: auto; padding-top: 4px; }
+.team-cta .btn { width: 100%; }
+.btn-team { background: var(--navy); color: #fff; }
+.btn-team:hover { background: var(--navy-2); }
+
+.team.tiger { --accent: #f2711c; }
+.team.lion { --accent: #d99a00; }
+.team.scouts { --accent: #1fa88f; }
+.team.adaptive { --accent: #5b5bd6; }
+.team.v5 { --accent: #c53a62; }
+.team.full .status { --status: var(--rose); }
+.team.soon .status { --status: var(--sun); }
+
+.team.v5 .team-body { justify-content: space-between; }
+.coming { background: repeating-linear-gradient(-45deg, #fff, #fff 12px, #fbf3f6 12px, #fbf3f6 24px); }
+
+/* ---------- Coach ---------- */
+.coach { background: var(--tint); }
+.coach-card {
+  background: #fff; border-radius: 28px; padding: clamp(26px, 5vw, 56px); border: 1px solid var(--line);
+}
+.coach-head { display: flex; align-items: center; gap: 18px; }
+.coach-avatar {
+  width: clamp(72px, 10vw, 96px); height: clamp(72px, 10vw, 96px); flex: none; border-radius: 50%;
+  object-fit: cover; object-position: 55% 30%; border: 3px solid var(--orange); box-shadow: 0 6px 16px rgba(20,33,61,.15);
+}
+.coach-card h2 { font-size: clamp(30px, 4.4vw, 46px); font-weight: 800; }
+.coach-card .role { color: var(--orange-deep); font-weight: 700; margin-top: 8px; }
+.coach-card p.body { margin-top: 18px; color: var(--ink-soft); font-size: 18px; max-width: 60ch; }
+.creds { margin-top: 24px; display: flex; flex-wrap: wrap; gap: 10px; }
+.cred { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 14px; font-weight: 700; font-size: 15px; }
+.cred svg { width: 20px; height: 20px; }
+
+/* ---------- Contact ---------- */
+.contact { background: var(--navy); color: #fff; position: relative; overflow: hidden; }
+.contact .section-title { color: #fff; max-width: 16ch; }
+.contact .section-lede { color: #c6cfe6; }
+.contact .eyebrow { color: var(--sun); }
+.contact-grid { margin-top: 44px; display: grid; gap: 22px; }
+@media (min-width: 900px) { .contact-grid { grid-template-columns: 1.3fr .7fr; } }
+.contact-main { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 26px; padding: clamp(24px, 4vw, 40px); }
+.phone-big { display: block; font-family: var(--display); font-weight: 800; font-size: clamp(38px, 7vw, 64px); letter-spacing: -0.02em; text-decoration: none; color: #fff; line-height: 1; }
+.phone-big:hover { color: var(--sun); }
+.phone-note { margin-top: 10px; color: #b9c3de; font-weight: 600; }
+.contact-actions { margin-top: 26px; display: grid; gap: 12px; grid-template-columns: 1fr; }
+@media (min-width: 520px) { .contact-actions { grid-template-columns: repeat(3, 1fr); } }
+.contact-actions .btn { width: 100%; }
+.btn-light { background: #fff; color: var(--navy); }
+.email-row {
+  margin-top: 26px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.14);
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.email-row svg { width: 26px; height: 26px; color: var(--sun); flex: none; }
+.email-row a { font-weight: 700; font-size: clamp(18px, 2.6vw, 22px); text-decoration: none; word-break: break-all; }
+.email-row a:hover { color: var(--sun); }
+
+.qr-card { background: #fff; color: var(--navy); border-radius: 26px; padding: 26px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.qr-card img { width: 100%; max-width: 230px; border-radius: 12px; }
+.qr-card h3 { font-size: 22px; font-weight: 800; }
+.qr-card p { font-size: 15px; color: var(--ink-soft); }
+.qr-card .wa-chip { display: inline-flex; align-items: center; gap: 8px; color: #128c4a; font-weight: 700; font-size: 15px; }
+.qr-card .wa-chip svg { width: 20px; height: 20px; }
+
+.steps { margin-top: 40px; display: grid; gap: 14px; grid-template-columns: 1fr; counter-reset: step; }
+@media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+.step { display: flex; gap: 14px; align-items: flex-start; color: #d4dbef; font-size: 16px; }
+.step::before {
+  counter-increment: step; content: counter(step);
+  flex: none; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--orange); color: #fff; font-family: var(--display); font-weight: 800;
+}
+.step b { color: #fff; display: block; }
+
+footer { background: #0d1730; color: #8e9abb; font-size: 14px; padding: 28px 0 96px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+@media (min-width: 720px) { footer { padding-bottom: 28px; } }
+
+/* ---------- Mobile action bar ---------- */
+.mobile-bar {
+  position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 60;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+  background: rgba(20,33,61,.97); padding: 8px; border-radius: 20px; box-shadow: 0 12px 32px rgba(0,0,0,.3);
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
+}
+.mobile-bar a { display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 8px 4px; border-radius: 14px; color: #fff; text-decoration: none; font-size: 12px; font-weight: 700; }
+.mobile-bar a svg { width: 22px; height: 22px; }
+.mobile-bar a.call { background: var(--orange); }
+.mobile-bar a.wa { background: var(--whatsapp); color: #08361b; }
+.mobile-bar a.txt { background: rgba(255,255,255,.12); }
+@media (min-width: 720px) { .mobile-bar { display: none; } }
+
+/* Reveal on scroll */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<!-- Reusable icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-bot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9 17h6"/><circle cx="12" cy="3" r="1"/></symbol>
+    <symbol id="i-access" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 7v6h5l2 6"/><path d="M9 9a7 7 0 1 0 8.5 10"/></symbol>
+    <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4a2 2 0 0 1-2-2V5h4M18 9h2a2 2 0 0 0 2-2V5h-4M6 3h12v6a6 6 0 0 1-12 0zM9 21h6M12 15v6"/></symbol>
+    <symbol id="i-bus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="15" rx="2"/><path d="M4 11h16M8 18v3M16 18v3M8 15h.01M16 15h.01"/></symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Shakti Bots home">
+      <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#ff7a1a"/><path d="M36 8 18 36h12l-4 20 20-30H34z" fill="#14213d"/></svg>
+      <span>Shakti <em>Bots</em></span>
+    </a>
+    <nav class="nav" aria-label="Main">
+      <a href="#learn">What kids learn</a>
+      <a href="#teams">Teams</a>
+      <a href="#coach">Coach</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="#contact">Enroll now</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="pill"><span class="dot"></span>Now enrolling · limited spots</span>
+      <h1>Where kids build robots, and robots build <span class="underline">kids</span>.</h1>
+      <p class="hero-lede">Shakti Bots is a hands-on VEX robotics program where young engineers design, build, code and compete with real robots. Along the way, they grow the confidence, teamwork and grit that last a lifetime.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#teams">See open spots</a>
+        <a class="btn btn-ghost" href="tel:+15715677389"><svg><use href="#i-phone"/></svg>571-567-7389</a>
+      </div>
+      <div class="hero-facts">
+        <span><svg><use href="#i-check"/></svg>Grades 2+</span>
+        <span><svg><use href="#i-check"/></svg>VEX GO &amp; VEX IQ</span>
+        <span><svg><use href="#i-check"/></svg>Real competitions</span>
+        <span><svg><use href="#i-check"/></svg>Small teams of 4–5</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 400 400">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff9a4a"/><stop offset="1" stop-color="#ff6a00"/></linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="170" fill="#1f3160"/>
+        <circle cx="200" cy="200" r="170" fill="none" stroke="#ffc93c" stroke-width="2" stroke-dasharray="4 10" opacity=".6"/>
+        <!-- antenna -->
+        <line x1="200" y1="78" x2="200" y2="112" stroke="#ffc93c" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="200" cy="72" r="11" fill="#ffc93c"/>
+        <!-- head -->
+        <rect x="128" y="110" width="144" height="104" rx="28" fill="url(#g1)"/>
+        <rect x="146" y="128" width="108" height="64" rx="18" fill="#14213d"/>
+        <circle cx="176" cy="160" r="12" fill="#1fbfa8"/>
+        <circle cx="224" cy="160" r="12" fill="#1fbfa8"/>
+        <circle cx="179" cy="157" r="4" fill="#fff"/>
+        <circle cx="227" cy="157" r="4" fill="#fff"/>
+        <path d="M184 180q16 10 32 0" stroke="#ffc93c" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <rect x="114" y="146" width="14" height="32" rx="6" fill="#ffc93c"/>
+        <rect x="272" y="146" width="14" height="32" rx="6" fill="#ffc93c"/>
+        <!-- body -->
+        <rect x="150" y="222" width="100" height="78" rx="18" fill="#fff"/>
+        <path d="M206 236 188 264h12l-4 22 20-30h-12z" fill="#ff7a1a"/>
+        <!-- arms -->
+        <path d="M150 240 108 216" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="102" cy="212" r="13" fill="#ffc93c"/>
+        <path d="M250 240 292 214" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+        <circle cx="298" cy="210" r="13" fill="#ffc93c"/>
+        <!-- drivetrain -->
+        <rect x="132" y="300" width="136" height="22" rx="8" fill="#ff7a1a"/>
+        <circle cx="152" cy="330" r="20" fill="#14213d" stroke="#ffc93c" stroke-width="5"/>
+        <circle cx="200" cy="330" r="20" fill="#14213d" stroke="#ffc93c" stroke-width="5"/>
+        <circle cx="248" cy="330" r="20" fill="#14213d" stroke="#ffc93c" stroke-width="5"/>
+        <circle cx="152" cy="330" r="5" fill="#ffc93c"/><circle cx="200" cy="330" r="5" fill="#ffc93c"/><circle cx="248" cy="330" r="5" fill="#ffc93c"/>
+        <!-- sparkles -->
+        <path d="M70 110l5 12 12 5-12 5-5 12-5-12-12-5 12-5z" fill="#ffc93c"/>
+        <path d="M330 300l4 9 9 4-9 4-4 9-4-9-9-4 9-4z" fill="#1fbfa8"/>
+        <path d="M320 92l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#fff" opacity=".8"/>
+      </svg>
+      <div class="stat-float one"><b>5–6</b>competitions<br>per season</div>
+      <div class="stat-float two"><b>🏆 1</b>award already<br>won by Team Tiger</div>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon" aria-hidden="true">
+  <div class="ribbon-track">
+    <span>Design</span><span>Build</span><span>Code</span><span>Test</span><span>Compete</span><span>Teamwork</span><span>Have fun</span>
+    <span>Design</span><span>Build</span><span>Code</span><span>Test</span><span>Compete</span><span>Teamwork</span><span>Have fun</span>
+  </div>
+</div>
+
+<!-- ================= WHAT KIDS LEARN ================= -->
+<section class="learn" id="learn">
+  <div class="wrap">
+    <span class="eyebrow">What kids learn</span>
+    <h2 class="section-title">Real engineering. Real code. Real confidence.</h2>
+    <p class="section-lede">Your child won't just follow instructions to snap a kit together. They'll think like engineers: invent, test, fail, fix and try again, alongside teammates who become friends.</p>
+
+    <div class="manifesto reveal">
+      <div class="ste">Science Tech Engineering<br><span class="one">Here, they're one.</span></div>
+      <p>For far too long, science, technology and engineering have been taught as separate subjects, kept apart by commas and spaces. At Shakti Bots we erase the commas. <strong>Engineering is backed by science and powered by technology</strong>, and kids experience all three together, every single session.</p>
+    </div>
+
+    <div class="learn-grid">
+      <article class="learn-card reveal">
+        <div class="icon-tile t-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+        <h3>Design like engineers</h3>
+        <p>Kids learn the "why" behind every mechanism and design their own drivetrains, chassis, arms, harvesters and more.</p>
+        <div class="tags"><span class="tag t-orange">Drivetrains</span><span class="tag t-orange">Chassis</span><span class="tag t-orange">Arms</span><span class="tag t-orange">Harvesters</span></div>
+      </article>
+      <article class="learn-card reveal">
+        <div class="icon-tile t-mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg></div>
+        <h3>Build, test, improve</h3>
+        <p>Ideas become real robots. Kids build them, put them through their paces, find what breaks, and make it better.</p>
+        <div class="tags"><span class="tag t-mint">Prototyping</span><span class="tag t-mint">Problem-solving</span><span class="tag t-mint">Iteration</span></div>
+      </article>
+      <article class="learn-card reveal">
+        <div class="icon-tile t-sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg></div>
+        <h3>Code with purpose</h3>
+        <p>Kids start with VEX coding blocks and grow into the C programming language, writing code that makes their own robot move.</p>
+        <div class="tags"><span class="tag t-sky">VEX Blocks</span><span class="tag t-sky">C programming</span></div>
+      </article>
+      <article class="learn-card reveal">
+        <div class="icon-tile t-sun"><svg><use href="#i-trophy"/></svg></div>
+        <h3>Compete on a real stage</h3>
+        <p>Teams take their robots to 5–6 VEX competitions each season (October–April). Nothing builds poise like a live match.</p>
+        <div class="tags"><span class="tag t-sun">5–6 events / season</span><span class="tag t-sun">Oct – Apr</span></div>
+      </article>
+      <article class="learn-card reveal">
+        <div class="icon-tile t-rose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Think globally</h3>
+        <p>1–2 online meetups a year with international teams from around the world and real industry experts.</p>
+        <div class="tags"><span class="tag t-rose">International teams</span><span class="tag t-rose">Industry experts</span></div>
+      </article>
+      <article class="learn-card reveal">
+        <div class="icon-tile t-mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
+        <h3>Learn from each other</h3>
+        <p>Most importantly, kids teach and learn from one another by explaining ideas, sharing tricks and celebrating each other's wins.</p>
+        <div class="tags"><span class="tag t-mint">Peer learning</span><span class="tag t-mint">Communication</span></div>
+      </article>
+
+      <article class="learn-card quote-card reveal">
+        <div class="quote-mark" aria-hidden="true">“</div>
+        <div>
+          <blockquote>The best engineer is the one with the best attitude.</blockquote>
+          <p>Kids learn to listen, share the work, handle setbacks and lift up their teammates on the way to becoming that best engineer. And yes, they have a <strong>ton of fun</strong> doing it.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEAMS ================= -->
+<section id="teams">
+  <div class="wrap">
+    <div class="teams-head">
+      <div>
+        <span class="eyebrow">Our teams</span>
+        <h2 class="section-title">Find the right team for your child</h2>
+        <p class="section-lede">Small teams mean every child gets hands on the robot. Spots fill fast, so reach out early to save a seat.</p>
+      </div>
+      <div class="legend" aria-label="Seat legend">
+        <span><i class="seat taken"></i>Filled</span>
+        <span><i class="seat open"></i>Open spot</span>
+        <span><i class="seat ask"></i>Call to ask</span>
+      </div>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- Team Tiger -->
+      <article class="team tiger full reveal">
+        <div class="team-top">
+          <div class="kit">VEX IQ · Competition team</div>
+          <h3>Team Tiger</h3>
+          <div class="sub">Grades 5 &amp; 6</div>
+          <span class="status">Team full · join the waitlist</span>
+          <div class="team-emblem" aria-hidden="true"><svg><use href="#i-trophy"/></svg></div>
+        </div>
+        <div class="team-body">
+          <div class="seats-row">
+            <div class="seats" role="img" aria-label="4 of 4 spots filled"><i class="seat taken"></i><i class="seat taken"></i><i class="seat taken"></i><i class="seat taken"></i></div>
+            <div class="seats-label"><b>0</b> of 4 spots open</div>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>4</b><span>Members</span></div>
+            <div class="stat"><b>2</b><span>Events</span></div>
+            <div class="stat award"><b>1</b><span>Award</span></div>
+          </div>
+          <ul class="details">
+            <li><svg><use href="#i-clock"/></svg><span><b>4–6 hrs/week</b> in season (Oct–Apr)</span></li>
+            <li><svg><use href="#i-clock"/></svg><span><b>1–2 hrs/week</b> off-season (Apr–Sep)</span></li>
+            <li><svg><use href="#i-check"/></svg><span>Mixed team of 5th and 6th graders</span></li>
+          </ul>
+          <div class="team-cta"><a class="btn btn-team" href="#contact">Join the waitlist</a></div>
+        </div>
+      </article>
+
+      <!-- Team Lion -->
+      <article class="team lion soon reveal">
+        <div class="team-top">
+          <div class="kit">VEX IQ · Competition team</div>
+          <h3>Team Lion</h3>
+          <div class="sub">Grade 6</div>
+          <span class="status">2 spots open · starts Apr/May 2027</span>
+          <div class="team-emblem" aria-hidden="true"><svg><use href="#i-bot"/></svg></div>
+        </div>
+        <div class="team-body">
+          <div class="seats-row">
+            <div class="seats" role="img" aria-label="2 of 4 spots filled, 2 open"><i class="seat taken"></i><i class="seat taken"></i><i class="seat open"></i><i class="seat open"></i></div>
+            <div class="seats-label"><b>2</b> of 4 spots open</div>
+          </div>
+          <div class="stats">
+            <div class="stat"><b>4</b><span>Team size</span></div>
+            <div class="stat"><b>New</b><span>Events</span></div>
+            <div class="stat award"><b>0</b><span>Awards</span></div>
+          </div>
+          <ul class="details">
+            <li><svg><use href="#i-cal"/></svg><span><b>Starts April / May 2027</b></span></li>
+            <li><svg><use href="#i-clock"/></svg><span><b>4–6 hrs/week</b> in season (Oct–Apr)</span></li>
+            <li><svg><use href="#i-clock"/></svg><span><b>1–2 hrs/week</b> off-season (Apr–Sep)</span></li>
+          </ul>
+          <div class="team-cta"><a class="btn btn-primary" href="#contact">Claim a spot</a></div>
+        </div>
+      </article>
+
+      <!-- Girl Scout Troop -->
+      <article class="team scouts reveal">
+        <div class="team-top">
+          <div class="kit">VEX GO · A Shakti Bots initiative</div>
+          <h3>Girl Scout Troop</h3>
+          <div class="sub">Grades 2–5 · Troop now forming</div>
+          <span class="status">4 spots open</span>
+          <div class="team-emblem" aria-hidden="true"><svg><use href="#i-star"/></svg></div>
+        </div>
+        <div class="team-body">
+          <div class="seats-row">
+            <div class="seats" role="img" aria-label="1 of 5 spots filled, 4 open"><i class="seat taken"></i><i class="seat open"></i><i class="seat open"></i><i class="seat open"></i><i class="seat open"></i></div>
+            <div class="seats-label"><b>4</b> of 5 spots open</div>
+          </div>
+          <ul class="details">
+            <li><svg><use href="#i-cal"/></svg><span><b>Once a month</b>, 1–2 hours</span></li>
+            <li><svg><use href="#i-pin"/></svg><span><b>Brambleton Library</b></span></li>
+            <li><svg><use href="#i-bot"/></svg><span>VEX GO robotics, a perfect first step into robotics</span></li>
+            <li><svg><use href="#i-bus"/></svg><span>Field trips to live VEX competition events</span></li>
+            <li><svg><use href="#i-star"/></svg><span>A special-interest group for curious girls</span></li>
+          </ul>
+          <div class="team-cta"><a class="btn btn-primary" href="#contact">Join the troop</a></div>
+        </div>
+      </article>
+
+      <!-- Adaptive Sporting Team -->
+      <article class="team adaptive soon reveal">
+        <div class="team-top">
+          <div class="kit">Inclusive · Team now forming</div>
+          <h3>Adaptive Sporting Team</h3>
+          <div class="sub">Robotics for every ability</div>
+          <span class="status">Now forming · call for availability</span>
+          <div class="team-emblem" aria-hidden="true"><svg><use href="#i-access"/></svg></div>
+        </div>
+        <div class="team-body">
+          <div class="seats-row">
+            <div class="seats" role="img" aria-label="Team of 5, call for availability"><i class="seat ask"></i><i class="seat ask"></i><i class="seat ask"></i><i class="seat ask"></i><i class="seat ask"></i></div>
+            <div class="seats-label">Team of <b>5</b></div>
+          </div>
+          <ul class="details">
+            <li><svg><use href="#i-access"/></svg><span>Meets at <b>wheelchair-accessible</b> locations</span></li>
+            <li><svg><use href="#i-check"/></svg><span>Every child belongs on the build team</span></li>
+            <li><svg><use href="#i-phone"/></svg><span>Call to learn more and reserve a place</span></li>
+          </ul>
+          <div class="team-cta"><a class="btn btn-team" href="tel:+15715677389">Call for availability</a></div>
+        </div>
+      </article>
+
+      <!-- VEX V5 -->
+      <article class="team v5 soon reveal">
+        <div class="team-top">
+          <div class="kit">VEX V5 · Coming 2028</div>
+          <h3>V5 Team</h3>
+          <div class="sub">Grades 7+ · The next level of competition robotics</div>
+          <span class="status">Starting 2028</span>
+          <div class="team-emblem" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1zM12 15l-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg></div>
+        </div>
+        <div class="team-body coming">
+          <ul class="details">
+            <li><svg><use href="#i-cal"/></svg><span>A new <b>VEX V5</b> team launches in 2028</span></li>
+            <li><svg><use href="#i-check"/></svg><span>A natural next step for our VEX IQ engineers</span></li>
+            <li><svg><use href="#i-phone"/></svg><span>Call now to get on the early list</span></li>
+          </ul>
+          <div class="team-cta"><a class="btn btn-team" href="tel:+15715677389">Call for availability</a></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= COACH ================= -->
+<section class="coach" id="coach">
+  <div class="wrap">
+    <div class="coach-card reveal">
+      <div>
+        <span class="eyebrow">Meet your coach</span>
+        <div class="coach-head">
+          <img class="coach-avatar" src="images/coach-bhavani.jpg" width="96" height="96" alt="Coach Bhavani">
+          <div>
+            <h2>Coach Bhavani</h2>
+            <div class="role">Founder &amp; Head Coach, Shakti Bots</div>
+          </div>
+        </div>
+        <p class="body">Coach Bhavani brings both an education and a professional career in <strong>electronics and computer science</strong> to every session. That means your child learns from someone who has done real engineering and who believes the most important thing a young engineer can build is character. As a <strong>VEX IQ judge</strong>, Coach Bhavani also knows exactly what judges look for at competitions and helps every team shine. Coach Bhavani leads every team with high standards, lots of encouragement and a belief that every kid can be an engineer.</p>
+        <div class="creds">
+          <span class="cred t-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg>Electronics</span>
+          <span class="cred t-sky"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>Computer science</span>
+          <span class="cred t-mint"><svg><use href="#i-bot"/></svg>VEX IQ coach</span>
+          <span class="cred t-sun"><svg><use href="#i-trophy"/></svg>VEX IQ judge</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="eyebrow">Enroll · Ask questions · Visit</span>
+    <h2 class="section-title">Ready to start your young engineer?</h2>
+    <p class="section-lede">Call, text or WhatsApp, whichever is easiest. We'll talk about your child's grade and interests and find the team that fits.</p>
+
+    <div class="contact-grid">
+      <div class="contact-main reveal">
+        <a class="phone-big" href="tel:+15715677389">571-567-7389</a>
+        <div class="phone-note">Call · Text · WhatsApp</div>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="tel:+15715677389"><svg><use href="#i-phone"/></svg>Call</a>
+          <a class="btn btn-light" href="sms:+15715677389"><svg><use href="#i-msg"/></svg>Text</a>
+          <a class="btn btn-wa" href="https://wa.me/15715677389" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+        </div>
+        <div class="email-row">
+          <svg><use href="#i-mail"/></svg>
+          <a href="mailto:shaktibots@gmail.com?subject=Shakti%20Bots%20enrollment">shaktibots@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="qr-card reveal">
+        <img src="images/whatsapp-qr.png" width="424" height="424" alt="WhatsApp QR code to add Shakti Bots as a contact">
+        <h3>Scan to WhatsApp us</h3>
+        <span class="wa-chip"><svg><use href="#i-wa"/></svg>Point your phone camera here</span>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><span><b>Reach out</b>Call, text, WhatsApp or email.</span></div>
+      <div class="step"><span><b>Find the fit</b>We match your child to the right team.</span></div>
+      <div class="step"><span><b>Start building</b>Your young engineer joins the crew!</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> Shakti Bots · Youth VEX Robotics</span>
+    <span>571-567-7389 · shaktibots@gmail.com</span>
+  </div>
+</footer>
+
+<nav class="mobile-bar" aria-label="Quick contact">
+  <a class="call" href="tel:+15715677389"><svg><use href="#i-phone"/></svg>Call</a>
+  <a class="txt" href="sms:+15715677389"><svg><use href="#i-msg"/></svg>Text</a>
+  <a class="wa" href="https://wa.me/15715677389" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+</nav>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+</body>
+</html>
